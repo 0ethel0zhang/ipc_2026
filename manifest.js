@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Image Downloader Agent",
+  "version": "1.0",
+  "description": "Downloads specific images to a folder when clicked.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Download Images"
+  }
+}
