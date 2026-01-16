@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const folderInput = document.getElementById('folder');
+    const dom_class = document.getElementById('dom_class');
     const startBtn = document.getElementById('startBtn');
 
     // 1. Load saved folder name if it exists
@@ -12,9 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. On Click: Save folder name and Inject Script
     startBtn.addEventListener('click', async () => {
         const folderName = folderInput.value.trim() || "default_images";
+        const domClassName = dom_class.value.trim() || "img-fluid lazy";
 
         // Save the name to storage so background.js can access it
         await chrome.storage.local.set({ folder_name: folderName });
+        await chrome.storage.local.set({ dom_class: domClassName });
 
         // Get the current active tab
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });

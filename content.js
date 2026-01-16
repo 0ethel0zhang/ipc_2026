@@ -2,7 +2,7 @@
 async function getLink() {
     let imageUrls = new Set();
     // Your specific selector from the repo
-    var gallery = document.getElementsByClassName("img-fluid lazy");
+    var gallery = document.getElementsByClassName(dom_class);
 
     for (let i = 0; i < gallery.length; i++) {
         // Ensure we get a valid URL (checking dataset.src or src)

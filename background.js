@@ -24,9 +24,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "download_image") {
 
     // Retrieve the user's preferred folder name from storage
-    chrome.storage.local.get("folder_name", (data) => {
+    chrome.storage.local.get("folder_name", "dom_class", (data) => {
       // Use the saved name, or fallback to 'my_images_folder' if empty
       const folder = data.folder_name || "my_images_folder";
+      const dom_class = data.dom_class || "img-fluid lazy";
 
       chrome.downloads.download({
         url: request.url,
@@ -34,6 +35,5 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         conflictAction: "uniquify"
       });
     });
-
   }
 });
